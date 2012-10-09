@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Shelfish Widget</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/shelfish.css">
+<!-- 	<link rel="stylesheet" href="stylesheets/shelfish.js"> -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	<div class="shelf" id="shelf">
+		<div class="wrapper">
+			<div class="handle" id="left"></div>
+			<div class="handle" id="right"></div>
+			<ul class="items" id="content"></ul>
+			<ul class="dots" id="navigator"></ul>
+		</div>
+	</div><!-- container -->
+
+
+<!-- End Document
+================================================== -->
+</body>
+<script type="text/javascript">
+	var content = document.getElementById("content");
+	var navigator = document.getElementById("navigator");
+
+	window.onload = function() {
+		var showcasemodal;
+		init('shelf', 6);
+
+	};
+
+	function init(id, nmr) {
+		var modal = document.getElementById(id);
+
+		content.style.width = (nmr * 600 + 100) + "px";
+		modal.style.backgroundImage = "none";
+
+		for(var ii=0; ii<nmr; ii++) {
+			console.log("hey");
+			var newItem = document.createElement('li');
+			newItem.style.backgroundImage = "url(images/"+ (ii+1)+".png)";
+			newItem.id = 'item_' + ii;
+			listen(newItem,	'click', zoomIn);
+
+			content.appendChild(newItem);
+
+			/* Bottom Navigation */
+			var newDot = document.createElement('li');
+			newDot.id = 'dot_' + ii;
+			navigator.appendChild(newDot);
+		}
+	}
+
+function zoomIn() {
+	console.log("zoom");
+	var background = document.createElement('div');
+	background.className = 'fullscreen';
+	listen(background, 'click', closeFullscreen);
+	document.body.appendChild(background);
+
+}
+
+function closeFullscreen(e) {
+	e.target.parentNode.removeChild(e.target);
+}
+function listen(elem, event, func, ext) {
+	
+	console.log("Extra" + ext);
+
+	if (elem.addEventListener) {  // all browsers except IE before version 9
+		console.log(elem);
+        elem.addEventListener (event, func, false);
+    }
+    else {
+        if (elem.attachEvent) {   // IE before version 9
+            elem.attachEvent ("on" + event, func);
+        }
+    }
+}
+
+function slideTo(id) {
+	var
+	console.log()
+}
+</script>
+</html>

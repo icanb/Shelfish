@@ -1,0 +1,1 @@
+A quick hack I've started during a flight. It'll provide a nice way to show a batch of photos with full screen capabilities.
